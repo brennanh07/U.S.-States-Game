@@ -23,14 +23,21 @@ while play_game:
         states.remove(answer)
 
         score += 1
+    else:
+        play_game = False
 
     if score == 50:
         play_game = False
 
+x_coords = [x for x, y in coordinates]
+y_coords = [y for x, y in coordinates]
+end_dict = {
+    "state": states,
+    "x": x_coords,
+    "y": y_coords,
+}
+
+states_to_learn = pd.DataFrame(end_dict)
+states_to_learn.to_csv("states_to_learn.csv")
+
 screen.exitonclick()
-
-
-
-
-
-
